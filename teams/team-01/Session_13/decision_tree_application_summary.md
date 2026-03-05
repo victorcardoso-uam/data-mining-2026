@@ -1,1 +1,0 @@
-We can use  decision tree algorithm to predict academic performance, to identify the key influences, that means, the factors that affect the most the students grades. Also to segmentate students  gruops 
