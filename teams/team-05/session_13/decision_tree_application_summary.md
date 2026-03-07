@@ -1,25 +1,50 @@
-# Decision Tree Application Summary
-## Session 13 - Team 05
+# Decision Tree Application Summary - Session 13
 
-## What is a Decision Tree?
-A decision tree is a predictive model that splits data into smaller 
-groups using rules. It represents logic in a tree-like structure and 
-produces a final prediction at the end of each path.
+## Overview
+In this session, we learned how to apply the decision tree algorithm to solve classification problems.
 
-## Key Components
-- **Root node**: the first decision (first split)
-- **Internal node**: a decision rule
-- **Branch**: outcome of a rule (true/false)
-- **Leaf**: final output (class or value)
-- **Path**: full sequence of decisions from root to leaf
+## Main Concept
+Decision trees are supervised learning models that divide the feature space into rectangular regions through a series of rules based on individual features.
 
-## Application Example
-A decision tree can classify wind turbine output as high or low based 
-on conditions like wind speed (> 8 m/s) or gearbox temperature (> 90°C).
-This supports decisions such as scheduling maintenance or identifying 
-optimal performance conditions.
+## Personal Application in My Projects
 
-## Classification vs Regression
-- **Classification**: predicts categories (Fault/Normal, Yes/No)
-- **Regression**: predicts numeric values (power output, temperature)
+### Project 1: Customer Classification
+I could use decision trees to classify store customers into categories (VIP, Regular, Occasional) based on:
+- Purchase frequency
+- Total amount spent
+- Time since last purchase
+- Type of preferred products
 
+**Benefit:** Identify high-value customers and personalize marketing strategies.
+
+### Project 2: Product Quality Diagnosis
+I would apply decision trees to predict whether a product in a manufacturing line is defective based on:
+- Physical dimensions
+- Weight
+- Resistance test results
+- Temperature during manufacturing
+
+**Benefit:** Automate quality control and reduce defective products before shipment.
+
+### Project 3: Movie Recommendation System
+I would use decision trees to recommend movies to users based on:
+- Preferred genres
+- Age range
+- Previous ratings
+- Duration of movies they watch completely
+
+**Benefit:** Improve user experience and increase views.
+
+## Advantages of Using Decision Trees
+-  Easy to understand and interpret
+-  Automatic handling of categorical and numerical features
+-  No data normalization required
+-  Identifies most important features
+
+## Disadvantages to Consider
+- Prone to overfitting
+-  Unstable with small changes in data
+-  Biased towards dominant features
+
+## Conclusion
+Decision trees are versatile tools for my future projects, especially when I need interpretability in my models.
