@@ -31,8 +31,8 @@ import os
 from typing import List
 import pandas as pd
 
-DATA_PATH = "PATH/TO/YOUR/PROJECT_DATASET.csv"
-TARGET_COL = "YOUR_TARGET_COLUMN"
+DATA_PATH = "solar_farm_production.csv"
+TARGET_COL = "energy_output_kw"
 MANUAL_EXCLUDE = []
 
 def classify_columns(df: pd.DataFrame, target_col: str):
@@ -85,6 +85,9 @@ def main() -> None:
     print("\n=== CATEGORICAL / OTHER COLUMNS ===")
     print(categorical_cols)
 
+    # Store correlation info for later use
+    strong_correlation_vars = []
+    
     if pd.api.types.is_numeric_dtype(df[TARGET_COL]):
         print("\n=== NUMERIC CORRELATION WITH TARGET ===")
         corr_series = df[numeric_cols].corr(numeric_only=True)[TARGET_COL].drop(labels=[TARGET_COL], errors="ignore")
@@ -96,6 +99,9 @@ def main() -> None:
         print("- Higher absolute correlation means stronger linear relationship.")
         print("- But correlation alone does NOT guarantee a variable should be used.")
         print("- Domain meaning still matters.")
+        
+        # Variables with strong correlation (abs > 0.5)
+        strong_correlation_vars = corr_df[corr_df["abs_correlation"] > 0.5].index.tolist()
     else:
         print("\nTarget is not numeric. Correlation with target is not shown.")
 
@@ -119,7 +125,8 @@ def main() -> None:
     else:
         print("No obvious exclusions detected automatically.")
 
-    candidate_predictors = [c for c in candidate_cols if c not in suggested_exclude]
+    # Include variables that are not suggested for exclusion, OR have strong correlation (> 0.5)
+    candidate_predictors = [c for c in candidate_cols if c not in suggested_exclude or c in strong_correlation_vars]
     print("\n=== CANDIDATE INDEPENDENT VARIABLES ===")
     for col in candidate_predictors:
         print("-", col)

@@ -63,7 +63,17 @@ def main() -> None:
     if TARGET_COL in numeric_cols:
         print("\n=== NUMERIC CORRELATIONS WITH TARGET ===")
         corr_series = df[numeric_cols].corr(numeric_only=True)[TARGET_COL].drop(labels=[TARGET_COL], errors="ignore")
-        print(corr_series.sort_values(key=abs, ascending=False))
+        corr_sorted = corr_series.sort_values(key=abs, ascending=False)
+        print(corr_sorted)
+        
+        # Variables with strong correlation (abs > 0.5)
+        strong_vars = corr_sorted[corr_sorted.abs() > 0.5].index.tolist()
+        print("\n=== VARIABLES WITH STRONG CORRELATION (abs > 0.5) ===")
+        if strong_vars:
+            for var in strong_vars:
+                print(f"- {var}: {corr_sorted[var]:.4f}")
+        else:
+            print("No variables with abs correlation > 0.5")
 
     print("\n=== ALL POSSIBLE CANDIDATE COLUMNS ===")
     for c in candidate_cols:
