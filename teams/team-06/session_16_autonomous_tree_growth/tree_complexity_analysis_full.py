@@ -581,6 +581,7 @@ if __name__ == "__main__":
 # =============================================================================
 # TEAM 06 - SESSION 16 ANSWERS & INTERPRETATION
 # =============================================================================
+# final
 # answers:
 # 1. Which tree has the lowest training error?
 # Answer: The tree with max_depth=15 (train_error=0.1293). 
