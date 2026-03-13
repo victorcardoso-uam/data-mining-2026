@@ -563,6 +563,12 @@ def main() -> None:
 
     print("If SAVE_PLOTS = True, your plots and summary table were saved in:")
     print(out_dir.resolve())
+#Answer of the questions:
+# 1. Deep tree has the lowest training error whit (3.404090)
+# 2. shallo tree and best tree have the lowest test error with (4.242425)
+# 3. validation performance stops improving at depht 2
+# 4. not really, the validation error is quite similar across all depths.
+# 5. I would choose the shallow tree, because has the lower test error
 
 
 if __name__ == "__main__":
