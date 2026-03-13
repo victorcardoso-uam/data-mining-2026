@@ -1,0 +1,15 @@
+age,income,student,buy
+youth,high,no,no
+youth,high,no,no
+middle,high,no,yes
+senior,medium,no,yes
+senior,low,yes,yes
+senior,low,yes,no
+middle,low,yes,yes
+youth,medium,no,no
+youth,low,yes,yes
+senior,medium,yes,yes
+youth,medium,yes,yes
+middle,medium,no,yes
+middle,high,yes,yes
+senior,medium,no,no
