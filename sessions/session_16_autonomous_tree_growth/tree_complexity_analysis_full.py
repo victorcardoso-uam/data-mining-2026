@@ -85,23 +85,23 @@ from sklearn.preprocessing import OneHotEncoder
 # Replace this with the path to YOUR project dataset.
 # Example:
 # DATA_PATH = "datasets/session_16/my_project_data.csv"
-DATA_PATH = "PATH/TO/YOUR/DATASET.csv"
+DATA_PATH = r"C:\Users\Fernando\Desktop\Data-mining-course\student-mat.csv"
 
 # TODO 2:
 # Replace this with the exact name of the column you want to predict.
-TARGET_COL = "YOUR_TARGET_COLUMN"
+TARGET_COL = "G3"
 
 # TODO 3:
 # Replace this with the features you want to use.
 # If you leave FEATURE_COLS = None, the script will use ALL columns except the target.
-FEATURE_COLS: Optional[List[str]] = None
+FEATURE_COLS: List[str] = ["failures", "absences", "studytime"]
 
 # TODO 4:
 # Choose one:
 # - "auto"            -> script tries to infer classification vs regression
 # - "classification"  -> target is categorical / class label
 # - "regression"      -> target is numeric / continuous value
-TASK_TYPE = "auto"
+TASK_TYPE = "regression"
 
 # Split configuration
 TEST_SIZE = 0.30
