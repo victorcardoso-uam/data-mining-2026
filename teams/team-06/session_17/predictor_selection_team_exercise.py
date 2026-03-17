@@ -7,16 +7,36 @@ Goal
 Use this script with the dataset assigned to your team.
 Your task is NOT to fit a regression model yet.
 Your task is to identify and justify the independent variables.
+<<<<<<< HEAD
+=======
+
+What you must understand
+------------------------
+1) The dependent variable is the one you want to predict.
+2) Independent variables are the variables you choose as possible predictors.
+3) That choice depends on the target.
+4) If the target changes, the independent variables may also change.
+5) Some columns should be excluded:
+   - IDs
+   - names / codes
+   - variables that are clearly not useful
+   - variables that leak information from the future
+>>>>>>> 0acf51b20749251753b048e28d808f654ee3e298
 """
 
 from __future__ import annotations
 import os
 import pandas as pd
 
+<<<<<<< HEAD
 # Path configuration
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_PATH = os.path.join(BASE_DIR, "team06_wind_turbine_output.csv")
 TARGET_COL = "power_output_kw"
+=======
+DATA_PATH = "PATH/TO/YOUR/TEAM_DATASET.csv"
+TARGET_COL = "YOUR_TARGET_COLUMN"
+>>>>>>> 0acf51b20749251753b048e28d808f654ee3e298
 
 def main() -> None:
     if not os.path.exists(DATA_PATH):
@@ -47,6 +67,7 @@ def main() -> None:
     print("\n=== TARGET VARIABLE ===")
     print(TARGET_COL)
 
+<<<<<<< HEAD
     # Step 2 & 5: Defining Predictors and Exclusions
     exclude_cols = ["turbine_code", "region", TARGET_COL]
     candidate_cols = [
@@ -58,6 +79,10 @@ def main() -> None:
     ]
 
     numeric_cols = df.select_dtypes(include="number").columns.tolist()
+=======
+    numeric_cols = df.select_dtypes(include="number").columns.tolist()
+    candidate_cols = [c for c in df.columns if c != TARGET_COL]
+>>>>>>> 0acf51b20749251753b048e28d808f654ee3e298
 
     if TARGET_COL in numeric_cols:
         print("\n=== NUMERIC CORRELATIONS WITH TARGET ===")
@@ -78,6 +103,7 @@ def main() -> None:
     for c in candidate_cols:
         print("-", c)
 
+<<<<<<< HEAD
     # === TEAM 06 FINAL ANALYSIS (ENGLISH) ===
     print("\n" + "="*45)
     print("         TEAM 06 - FINAL ANALYSIS")
@@ -103,3 +129,14 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+=======
+    print("\n=== TEAM TASK ===")
+    print("Discuss and answer these questions:")
+    print("1. Which variables could be used as independent variables?")
+    print("2. Which variables should be excluded?")
+    print("3. Why do your selected variables make sense for predicting the target?")
+    print("4. Would your answer change if the target variable were different?")
+
+if __name__ == "__main__":
+    main()
+>>>>>>> 0acf51b20749251753b048e28d808f654ee3e298
