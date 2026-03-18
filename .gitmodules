@@ -1,0 +1,3 @@
+[submodule "repositories/data-mining-2026"]
+	path = repositories/data-mining-2026
+	url = https://github.com/victorcardoso-uam/data-mining-2026.git

@@ -1,0 +1,11 @@
+How many clusters were created?
+
+3 clusters were created using K-Means clustering
+Which cluster has the highest total spending?
+
+Cluster 0 has the highest total spending at $65,166.66
+(Cluster 1: $26,650.94, Cluster 2: $33,293.01)
+Which cluster has the most frequent customers?
+
+Cluster 0 has the most frequent customers with an average of 6.73 transactions per customer
+(Cluster 1: 2.95 transactions, Cluster 2: 3.08 transactions)

@@ -1,0 +1,131 @@
+# Validation report
+
+
+
+Generated: 2026-02-07T12:50:21.016334
+
+
+
+## 1) DATASET OVERVIEW
+
+- Shape (rows, columns): (5268, 53)
+
+
+
+**Columns:**
+
+
+
+OBJECTID, COMPKEY, UNITID, UNITID2, UNITIDSORT, UNITDESC, STNAME_ORD, ONSTREET, STATUS, PRIMARYDISTRICTCD, SECONDARYDISTRICTCD, OVERRIDEYN, XSTRLO, XSTRHI, ARTCLASS, ARTDESCRIPT, OWNER, BLOCKNBR, SPEEDLIMIT, SEGDIR, ONEWAY, ONEWAYDIR, FLOW, SEGLENGTH, SURFACEWIDTH, SURFACETYPE_1, SURFACEDATE_1, SURFACETYPE_2, SURFACEDATE_2, INTRLO, DIRLO, INTKEYLO, INTRHI, DIRHI, INTKEYHI, GIS_MID_X, GIS_MID_Y, SE_ANNO_CAD_DATA, SGNDBKROUTE, NGHBRHDGRNWY, NATIONHWYSYS, STREETTYPE, MJTRK_STR_FLAG, PVMTCONDINDX1, PVMTCONDINDX2, TRANCLASS, TRANDESCRIPT, OVERRIDECOMMENT, BLOCK_URL, SLOPE_PCT, PVMTCATEGORY, PARKBOULEVARD, Shape__Length
+
+
+
+**Data types:**
+
+
+
+```
+
+OBJECTID                 int64
+COMPKEY                  int64
+UNITID                   int64
+UNITID2                  int64
+UNITIDSORT               int64
+UNITDESC                   str
+STNAME_ORD                 str
+ONSTREET                   str
+STATUS                     str
+PRIMARYDISTRICTCD          str
+SECONDARYDISTRICTCD        str
+OVERRIDEYN                 str
+XSTRLO                     str
+XSTRHI                     str
+ARTCLASS                 int64
+ARTDESCRIPT                str
+OWNER                      str
+BLOCKNBR                 int64
+SPEEDLIMIT               int64
+SEGDIR                     str
+ONEWAY                     str
+ONEWAYDIR                  str
+FLOW                       str
+SEGLENGTH              float64
+SURFACEWIDTH           float64
+SURFACETYPE_1              str
+SURFACEDATE_1              str
+SURFACETYPE_2              str
+SURFACEDATE_2              str
+INTRLO                     str
+DIRLO                      str
+INTKEYLO               float64
+INTRHI                     str
+DIRHI                      str
+INTKEYHI               float64
+GIS_MID_X              float64
+GIS_MID_Y              float64
+SE_ANNO_CAD_DATA           str
+SGNDBKROUTE                str
+NGHBRHDGRNWY               str
+NATIONHWYSYS               str
+STREETTYPE                 str
+MJTRK_STR_FLAG             str
+PVMTCONDINDX1            int64
+PVMTCONDINDX2            int64
+TRANCLASS                int64
+TRANDESCRIPT               str
+OVERRIDECOMMENT        float64
+BLOCK_URL                  str
+SLOPE_PCT              float64
+PVMTCATEGORY               str
+PARKBOULEVARD              str
+Shape__Length          float64
+
+```
+
+
+
+## 2) MISSING VALUES
+
+                 missing_count  missing_percentage
+OVERRIDECOMMENT           5268          100.000000
+SURFACETYPE_2             4731           89.806378
+SURFACEDATE_2             4729           89.768413
+MJTRK_STR_FLAG            4366           82.877752
+SURFACEDATE_1              344            6.529992
+SURFACETYPE_1              273            5.182232
+STREETTYPE                 151            2.866363
+SLOPE_PCT                   17            0.322703
+INTKEYHI                     2            0.037965
+INTRLO                       2            0.037965
+
+
+
+## 3) DESCRIPTIVE STATISTICS
+
+           OBJECTID        COMPKEY        UNITID      UNITID2    UNITIDSORT     ARTCLASS      BLOCKNBR   SPEEDLIMIT    SEGLENGTH  SURFACEWIDTH       INTKEYLO       INTKEYHI     GIS_MID_X      GIS_MID_Y  PVMTCONDINDX1  PVMTCONDINDX2    TRANCLASS  OVERRIDECOMMENT    SLOPE_PCT  Shape__Length
+count  5.268000e+03    5268.000000   5268.000000  5268.000000  5.268000e+03  5268.000000   5268.000000  5268.000000  5268.000000   5268.000000    5266.000000    5266.000000  5.268000e+03    5268.000000    5268.000000    5268.000000  5268.000000              0.0  5251.000000    5268.000000
+mean   7.284668e+06   31507.894647   8430.360668   404.321754  8.458821e+07     1.694571   4008.512718    25.550494   412.412356     40.822134   48597.581466   49144.345803  1.271086e+06  229753.892009      58.757213       7.807707     2.631169              NaN     2.924776     411.670719
+std    6.825318e+03   97007.806785   5141.984909   353.060574  5.582226e+07     0.861334   3577.724322     3.676793   326.822986     16.253856   89833.521580   91027.093102  8.564167e+03   21639.448249      26.290849      24.163916     0.651904              NaN     2.816864     325.112096
+min    7.273111e+06    1000.000000     10.000000     0.000000  1.000600e+05     0.000000      0.000000     0.000000    24.000000      0.000000   23820.000000   23808.000000  1.250405e+06  184287.265000       0.000000       0.000000     1.000000              NaN     0.000000      23.624809
+25%    7.279301e+06    8406.750000   4800.000000   130.000000  4.800048e+07     1.000000   1200.000000    25.000000   262.000000     32.000000   27663.250000   27691.250000  1.265534e+06  212117.390550      41.000000       0.000000     2.000000              NaN     1.000000     261.419525
+50%    7.283062e+06   11908.500000   8299.000000   310.000000  8.299101e+07     2.000000   3000.000000    25.000000   322.000000     42.000000   30442.000000   30478.500000  1.271463e+06  229327.563750      62.000000       0.000000     3.000000              NaN     2.000000     322.245192
+75%    7.290974e+06   16761.250000  11988.750000   620.000000  1.198876e+08     2.000000   6200.000000    25.000000   481.000000     50.000000   34761.250000   34869.750000  1.277193e+06  247418.974500      79.000000       0.000000     3.000000              NaN     4.000000     480.004726
+max    7.296990e+06  898526.000000  19115.000000  8660.000000  1.663509e+09     9.000000  77000.000000    60.000000  4727.000000    136.000000  931184.000000  931178.000000  1.293048e+06  271517.585200     100.000000     100.000000     5.000000              NaN    23.000000    4726.935812
+
+
+
+## 4) DUPLICATE ROWS
+
+- Number of duplicate rows: 0
+
+
+
+## 5) INTEGRITY CHECKS (CUSTOMIZE)
+
+- Negative speed limits: 0
+
+- Average speed limit: 25.55
+
+- Unique values in `STATUS`: ['INSVC', 'TEMPOUTSVC', ' ', 'OUTSVC']
+
+- Unique street classes: [2, 1, 3, 0, 5, 9, 4]
