@@ -116,5 +116,5 @@ print("   Answer: The data is stored as 'Object' type (strings/text). In this da
 print("   it represents nominal categories that do not have a natural numerical order. español")
 print("4. What must be done before using that variable in regression?")
 print("   Answer: We must apply a transformation called 'Encoding'. The most common")
-print("   method is One-Hot Encoding, which converts each text category into new columns")
+print("   method is One-Hot Encoding, which converts each text category into new columns, español")
 print("   filled with 0s and 1s, making the data readable for the mathematical model. español")

@@ -135,7 +135,7 @@ print("R2  :", round(r2, 4))
 print("\n=== QUESTIONS FOR YOUR TEAM ===")
 print("1. Why does this case work correctly?")
 print("   Answer: It works because One-Hot Encoding converted text categories into numbers (0s and 1s),")
-print("   making them readable for the mathematical regression model.")
+print("   making them readable for the mathematical regression model. español")
 
 print("\n2. What new columns were created by one-hot encoding?")
 print(f"   Answer: The new columns are: {X_case3_encoded.columns[-2:].tolist()}")
@@ -146,4 +146,4 @@ print(f"   MAE also dropped from 10.93 to {round(mae, 4)}, meaning our predictio
 
 print("\n4. What does that tell you about the predictive value of the categorical variable?")
 print("   Answer: It shows that the 'shift' variable is a very strong predictor. Production varies")
-print("   significantly depending on the time of day, and including this data helps the model a lot.")
+print("   significantly depending on the time of day, and including this data helps the model a lot. español")
