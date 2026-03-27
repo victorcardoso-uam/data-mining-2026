@@ -134,27 +134,26 @@ print("R2  :", round(r2, 4))
 # ============================================================
 # TEAM REFLECTION
 # ============================================================
-
-print("\n=== QUESTIONS FOR YOUR TEAM ===")
-print("1. Why does this case work correctly?")
-print("   ANSWER: One-hot encoding converts the categorical variable 'shift' into binary")
-print("   numeric columns (shift_Morning, shift_Night), which allows linear regression to")
-print("   properly use categorical data. With drop_first=True, we avoid multicollinearity")
-print("   by using one category (Evening) as the baseline reference.")
-print()
-print("2. What new columns were created by one-hot encoding?")
-print("   ANSWER: The 'shift' column with values (Evening, Morning, Night) was transformed")
-print("   into two binary columns: 'shift_Morning' and 'shift_Night'. Evening is the")
-print("   baseline (dropped) category represented when both columns are False.")
-print()
-print("3. Compare these metrics with Case 1. Did performance improve?")
-print("   ANSWER: Case 3 has excellent metrics (R² = 0.9597, RMSE = 7.792), indicating")
-print("   that including the categorical variable 'shift' improves the model. Case 1")
-print("   (without shift) likely had lower R² and higher RMSE, proving that the shift")
-print("   variable adds important predictive information.")
-print()
-print("4. What does that tell you about the predictive value of the categorical variable?")
-print("   ANSWER: The high R² (0.9597) and low RMSE demonstrate that the 'shift' variable")
-print("   has strong predictive value. Different work shifts significantly influence daily")
-("   output units. This categorical feature should definitely be included in the model.")
+#
+# 1. Why does this case work correctly?
+#    One-hot encoding converts the categorical variable 'shift' into binary numeric columns
+#    (shift_Morning, shift_Night), which allows linear regression to properly use categorical
+#    data. With drop_first=True, we avoid multicollinearity by using one category (Evening)
+#    as the baseline reference.
+#
+# 2. What new columns were created by one-hot encoding?
+#    The 'shift' column with values (Evening, Morning, Night) was transformed into two binary
+#    columns: 'shift_Morning' and 'shift_Night'. Evening is the baseline (dropped) category
+#    represented when both columns are False.
+#
+# 3. Compare these metrics with Case 1. Did performance improve?
+#    Case 3 has excellent metrics (R² = 0.9597, RMSE = 7.792), indicating that including
+#    the categorical variable 'shift' improves the model. Case 1 (without shift) likely had
+#    lower R² and higher RMSE, proving that the shift variable adds important predictive
+#    information.
+#
+# 4. What does that tell you about the predictive value of the categorical variable?
+#    The high R² (0.9597) and low RMSE demonstrate that the 'shift' variable has strong
+#    predictive value. Different work shifts significantly influence daily output units.
+#    This categorical feature should definitely be included in the model.
 
