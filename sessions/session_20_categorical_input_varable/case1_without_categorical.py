@@ -21,6 +21,7 @@ Do not change the general structure of the script.
 
 import pandas as pd
 import numpy as np
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -31,15 +32,17 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # CONFIGURATION
 # ============================================================
 
-DATA_PATH = "categorical_regression_production.csv"
+# Get the directory of the current script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(SCRIPT_DIR, "categorical_regression_production.csv")
 
 # TODO 1:
 # Write the target column name
-TARGET = ?
+TARGET = "daily_output_units"
 
 # TODO 2:
 # Write the categorical column name
-CATEGORICAL_COLUMN = ?
+CATEGORICAL_COLUMN = "shift"
 
 TEST_SIZE = 0.20
 RANDOM_STATE = 42
@@ -67,11 +70,11 @@ print(df.dtypes)
 # Create X_case1 by removing:
 # - the target column
 # - the categorical column
-X_case1 = ?
+X_case1 = df.drop([TARGET, CATEGORICAL_COLUMN], axis=1)
 
 # TODO 4:
 # Create y using the target column
-y = ?
+y = df[TARGET]
 
 print("\n=== PREDICTOR COLUMNS USED IN CASE 1 ===")
 print(X_case1.columns.tolist())
@@ -94,11 +97,11 @@ model = LinearRegression()
 
 # TODO 5:
 # Fit the model
-?
+model.fit(X_train, y_train)
 
 # TODO 6:
 # Generate predictions on X_test
-predictions = ?
+predictions = model.predict(X_test)
 
 
 # ============================================================
@@ -111,10 +114,10 @@ predictions = ?
 # - MSE
 # - RMSE
 # - R2
-mae = ?
-mse = ?
-rmse = ?
-r2 = ?
+mae = mean_absolute_error(y_test, predictions)
+mse = mean_squared_error(y_test, predictions)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_test, predictions)
 
 print("\n=== CASE 1 RESULTS ===")
 print("MAE :", round(mae, 4))
@@ -132,3 +135,25 @@ print("1. Which predictors were used in this case?")
 print("2. Why was the categorical variable excluded?")
 print("3. Do you think excluding that variable may reduce performance?")
 print("4. Keep these metrics to compare them later with Case 3.")
+"""
+TEAM REFLECTION ANSWERS
+----------------------
+1. Which predictors were used in this case?
+    - production_hours
+    - machine_temperature_c
+    - operator_experience_years
+    - material_hardness_index
+
+2. Why was the categorical variable excluded?
+    The categorical variable ("shift") was excluded to show how the regression model performs with only numeric predictors, and to compare with cases where categorical data is included or encoded.
+
+3. Do you think excluding that variable may reduce performance?
+    Yes, excluding a relevant categorical variable can reduce model performance if it contains useful information for predicting the target. The model may miss important patterns associated with different shifts.
+
+4. Keep these metrics to compare them later with Case 3.
+    Script results after running:
+    - MAE: 10.9304
+    - MSE: 172.9613
+    - RMSE: 13.1515
+    - R2: 0.8853
+"""
