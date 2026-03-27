@@ -25,8 +25,8 @@ from __future__ import annotations
 import os
 import pandas as pd
 
-DATA_PATH = r"C:\Users\mario\OneDrive\Escritorio\School\8to Semestre\Data Miing\data-mining-course\Repositories\data-mining-2026\sessions\session_17_selection_of_independent_variables\team04_warehouse_picking_time.csv"
-TARGET_COL = "picking_time_min"
+DATA_PATH = r"C:\Users\Fernando\Desktop\Data-mining-course\data-mining-2026\data-mining-2026\teams\team-01\Session_17\team01_inventory_replenishment_cost.csv"
+TARGET_COL = "replenishment_cost_usd"
 
 def main() -> None:
     if not os.path.exists(DATA_PATH):
@@ -81,20 +81,10 @@ def main() -> None:
 
     print("\n=== TEAM TASK ===")
     print("Discuss and answer these questions:")
-    print("1. Which variables could be used as independent variables?")
-    # The variables that could be used as independent variables are: items_to_pick, travel_distance_m, picker_experience_years, aisle_congestion_index, cart_weight_kg.
-    # These are numeric variables that could potentially influence the picking time.
-    print("2. Which variables should be excluded?")
-    # "warehouse_order_code and shift columns should be excluded because they are identifiers that do not provide predictive information about the target variable. They are unique to each order and shift, and thus do not have a meaningful relationship with the picking time."
-    print("3. Why do your selected variables make sense for predicting the target?")
-    # The selected variables make sense because they directly relate to the factors affecting picking time: 
-    # - items_to_pick: More items likely require more time.
-    # - travel_distance_m: Longer distances mean more time spent traveling.
-    # - picker_experience_years: More experienced pickers might be faster.
-    # - aisle_congestion_index: Higher congestion could slow down picking.
-    # - cart_weight_kg: Heavier carts might be harder to maneuver, increasing time.
-    print("4. Would your answer change if the target variable were different?")
-    # Yes, if the target were something like "picker fatigue" or "order accuracy", different variables might be more relevant, such as shift timing or picker experience, and some current variables like travel distance might be less important.
+    print("1. Which variables could be used as independent variables? monthly_demand_units, lead_time_days,unit_cost_usd, order_quantity_units, transport_mode")
+    print("2. Which variables should be excluded? sku_code, order_quantity_units")
+    print("3. Why do your selected variables make sense for predicting the target?Because the are directly related to the cost of replenishment")
+    print("4. Would your answer change if the target variable were different?yes,because the relevance of predictors depends on the target")
 
 if __name__ == "__main__":
     main()

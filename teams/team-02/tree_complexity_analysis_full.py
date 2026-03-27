@@ -62,6 +62,8 @@ from typing import List, Optional, Tuple, Dict
 
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend (no Tcl/Tk required)
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
@@ -85,16 +87,16 @@ from sklearn.preprocessing import OneHotEncoder
 # Replace this with the path to YOUR project dataset.
 # Example:
 # DATA_PATH = "datasets/session_16/my_project_data.csv"
-DATA_PATH = "PATH/TO/YOUR/DATASET.csv"
+DATA_PATH = "C:\\Users\\david\\Downloads\\Data Mining Course\\Dataset Parcial 2\\Data\\Raw\\renewable_energy_cleaned_exam.csv"
 
 # TODO 2:
 # Replace this with the exact name of the column you want to predict.
-TARGET_COL = "YOUR_TARGET_COLUMN"
+TARGET_COL = "power_kw"
 
 # TODO 3:
 # Replace this with the features you want to use.
 # If you leave FEATURE_COLS = None, the script will use ALL columns except the target.
-FEATURE_COLS: List[str] = ["failures", "absences", "studytime"]
+FEATURE_COLS: Optional[List[str]] = ["irradiance_wm2", "humidity_pct"]
 
 # TODO 4:
 # Choose one:
@@ -567,23 +569,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-# === Interpretation Answers (Step L) ===
-# 1. Which tree has the lowest training error?
-#    The Deep Tree (max_depth=10) has the lowest training error (0.0887).
-#
-# 2. Which tree has the lowest validation/test error?
-#    The Best Tree (max_depth=6) has the lowest validation error (0.3530).
-#
-# 3. At what depth does validation performance stop improving?
-#    Validation error stops improving at max_depth=6, then starts to increase or fluctuate.
-#
-# 4. Does your dataset show overfitting as tree depth increases?
-#    Yes. Training error continues to decrease, but validation error increases after the best depth, indicating overfitting.
-#
-# 5. Which tree would you choose for deployment, and why?
-#    The Best Tree (max_depth=6) should be chosen for deployment because it achieves the lowest validation error, balancing performance and generalization.
-#
-# 6. Explain the trade-off between model complexity and performance in your own dataset.
-#    As model complexity (tree depth) increases, training error decreases, but validation error only improves up to a point. Beyond max_depth=6, the model overfits, capturing noise in the training data and losing generalization. The best model is not the most complex, but the one that performs best on unseen data.
-
