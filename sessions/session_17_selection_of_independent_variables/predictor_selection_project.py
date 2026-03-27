@@ -31,8 +31,8 @@ import os
 from typing import List
 import pandas as pd
 
-DATA_PATH = "solar_farm_production.csv"
-TARGET_COL = "energy_output_kw"
+DATA_PATH = r"C:\Users\mario\OneDrive\Escritorio\School\8to Semestre\Data Miing\data-mining-course\Repositories\data-mining-2026\teams\team-04\project_dataset\clean_school_offenses_dataset.csv"
+TARGET_COL = "Percent of Schools Reporting "
 MANUAL_EXCLUDE = []
 
 def classify_columns(df: pd.DataFrame, target_col: str):
