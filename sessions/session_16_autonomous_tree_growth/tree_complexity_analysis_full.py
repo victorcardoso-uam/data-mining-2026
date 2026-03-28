@@ -85,16 +85,16 @@ from sklearn.preprocessing import OneHotEncoder
 # Replace this with the path to YOUR project dataset.
 # Example:
 # DATA_PATH = "datasets/session_16/my_project_data.csv"
-DATA_PATH = r"C:\Users\jorge\OneDrive\Escritorio\Decimo semestre\Data Mining\data_mining_course\repositories\data-mining-2026\datasets\session_13\wind_turbine_operations.csv"
+DATA_PATH = "PATH/TO/YOUR/DATASET.csv"
 
 # TODO 2:
 # Replace this with the exact name of the column you want to predict.
-TARGET_COL = "wind_speed_ms"
+TARGET_COL = "YOUR_TARGET_COLUMN"
 
 # TODO 3:
 # Replace this with the features you want to use.
 # If you leave FEATURE_COLS = None, the script will use ALL columns except the target.
-FEATURE_COLS: Optional[List[str]] = None
+FEATURE_COLS: List[str] = ["failures", "absences", "studytime"]
 
 # TODO 4:
 # Choose one:

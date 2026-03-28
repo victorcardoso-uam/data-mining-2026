@@ -21,6 +21,7 @@ Do not change the general structure of the script.
 
 import pandas as pd
 import numpy as np
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -31,7 +32,9 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # CONFIGURATION
 # ============================================================
 
-DATA_PATH = "sessions/session_20_categorical_input_varable/categorical_regression_production.csv"
+# Get the directory of the current script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(SCRIPT_DIR, "categorical_regression_production.csv")
 
 # TODO 1:
 # Write the target column name

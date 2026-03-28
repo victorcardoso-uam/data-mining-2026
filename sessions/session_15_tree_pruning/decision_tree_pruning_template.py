@@ -26,12 +26,12 @@ from sklearn.metrics import accuracy_score, confusion_matrix, mean_squared_error
 # -----------------------------
 # ✅ 1) CONFIG — EDIT THESE
 # -----------------------------
-DATA_PATH = "PATH/TO/YOUR/DATASET.csv"      # TODO
-TARGET_COL = "YOUR_TARGET_COLUMN"           # TODO
+DATA_PATH = r"C:\Users\Fernando\Desktop\Data-mining-course\student-mat.csv"      # TODO
+TARGET_COL = "G3"           # TODO
 FEATURE_COLS: Optional[List[str]] = None    # TODO: set list or keep None (numeric auto-select)
 TASK_TYPE = "auto"                          # "auto" | "classification" | "regression"
 
-TEST_SIZE = 0.30
+TEST_SIZE = 0.30 # Variables de cambio en examen.
 RANDOM_STATE = 42
 
 # Try at least two pre-pruning configurations
