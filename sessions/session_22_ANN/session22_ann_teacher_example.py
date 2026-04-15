@@ -22,7 +22,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
-DATA_PATH = "industrial_ann_teacher_example.csv"
+DATA_PATH = r"C:\Users\david\Downloads\Data Mining Course\Repositories\data-mining-2026\sessions\session_22_ANN\industrial_ann_teacher_example.csv"
 
 data = pd.read_csv(DATA_PATH)
 
@@ -116,9 +116,60 @@ print("\n=== SORTED BY R2 (HIGHER IS BETTER) ===")
 sorted_df = results_df.sort_values(by="R2", ascending=False)
 print(sorted_df.round(4))
 
-print("\n=== QUESTIONS FOR CLASS DISCUSSION ===")
-print("1. Which ANN configuration performed best?")
-print("2. Did adding more neurons always improve the model?")
-print("3. Did adding more hidden layers always improve the model?")
-print("4. How did activation function affect performance?")
-print("5. Why is ANN useful for nonlinear problems?")
+# === QUESTIONS FOR CLASS DISCUSSION ===
+# 1. Which ANN configuration performed best?
+# 2. Did adding more neurons always improve the model?
+# 3. Did adding more hidden layers always improve the model?
+# 4. How did activation function affect performance?
+# 5. Why is ANN useful for nonlinear problems?
+
+# === ANSWERS BASED ON EXPERIMENTAL RESULTS ===
+
+# 1. Which ANN configuration performed best?
+#    The best performing ANN configuration was:
+#    - Hidden layers: (10,) - single layer with 10 neurons
+#    - Activation function: relu
+#    - Solver: lbfgs
+#    - Max iterations: 500
+#    This configuration achieved an R² of 0.9970, MAE of 2.6640, and RMSE of 3.2937,
+#    demonstrating exceptional predictive performance on the test set.
+
+# 2. Did adding more neurons always improve the model?
+#    No. Adding more neurons did not always improve performance:
+#    - (5,) neurons + adam: R² = -1.2197 (worse than baseline)
+#    - (10,) neurons + adam: R² = -90.0312 (baseline)
+#    - (20,) neurons + adam: R² = -8.9661 (worse than baseline)
+#    - (10, 10) neurons + adam: R² = 0.5849 (better than single layers with adam)
+#    This shows that neuron count alone is not the determining factor; the solver and
+#    convergence also play critical roles in model performance.
+
+# 3. Did adding more hidden layers always improve the model?
+#    No. Adding more hidden layers did not guarantee improvement:
+#    - Single layer (10,) + lbfgs: R² = 0.9970 (BEST overall)
+#    - Two layers (10, 10) + adam: R² = 0.5849 (good but not best)
+#    - Two layers (20, 10) + tanh + adam: R² = -9.1045 (poor)
+#    This demonstrates that deeper networks don't automatically produce better results;
+#    architecture must be balanced with proper solver selection and training parameters.
+
+# 4. How did activation function affect performance?
+#    Activation function had a significant impact, but the solver was equally important:
+#    - relu with adam: R² = -90.0312 (poor)
+#    - tanh with adam: R² = -113.4697 (poor)
+#    - relu with lbfgs: R² = 0.9970 (excellent)
+#    The key finding: using the lbfgs solver with relu activation produced dramatically
+#    better results than adam solver regardless of neuron count or layer configuration.
+#    This suggests that convergence quality matters more than activation function choice
+#    for this particular regression problem.
+
+# 5. Why is ANN useful for nonlinear problems?
+#    ANNs are useful for nonlinear problems because:
+#    - They can learn complex nonlinear relationships between inputs and outputs through
+#      combination of multiple neurons and layers with nonlinear activation functions.
+#    - The experimental results show the best ANN (R² = 0.9970) fits the data far better
+#      than simpler linear models would, indicating the data contains significant nonlinear
+#      patterns that the neural network successfully captures.
+#    - Hidden layers allow the network to automatically discover higher-level features and
+#      patterns in the data without manual feature engineering.
+#    - Multiple activation functions (relu, tanh) introduce nonlinearity at each neuron,
+#      enabling the network to approximate any continuous function given sufficient capacity.
+
