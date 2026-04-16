@@ -20,6 +20,7 @@ Then answer the reflection questions at the end.
 """
 
 import pandas as pd
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -29,7 +30,9 @@ from sklearn.linear_model import LinearRegression
 # CONFIGURATION
 # ============================================================
 
-DATA_PATH = "sessions/session_20_categorical_input_varable/categorical_regression_production.csv"
+# Get the directory of the current script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(SCRIPT_DIR, "categorical_regression_production.csv")
 
 # TODO 1:
 # Write the target column name

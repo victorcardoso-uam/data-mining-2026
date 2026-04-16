@@ -85,11 +85,11 @@ from sklearn.preprocessing import OneHotEncoder
 # Replace this with the path to YOUR project dataset.
 # Example:
 # DATA_PATH = "datasets/session_16/my_project_data.csv"
-DATA_PATH = r"C:\Users\Fernando\Desktop\Data-mining-course\student-mat.csv"
+DATA_PATH = "PATH/TO/YOUR/DATASET.csv"
 
 # TODO 2:
 # Replace this with the exact name of the column you want to predict.
-TARGET_COL = "G3"
+TARGET_COL = "YOUR_TARGET_COLUMN"
 
 # TODO 3:
 # Replace this with the features you want to use.
