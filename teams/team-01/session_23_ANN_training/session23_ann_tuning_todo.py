@@ -54,7 +54,7 @@ from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 # 1. LOAD DATA
 # ============================================================
 
-DATA_PATH = r"C:\Users\ale03\OneDrive\Escritorio\MAYAB\SEMESTRE 8\MINERIA DE DATOS\data-mining-course\data-mining-2026\teams\team-01\session_22_AN\industrial_ann_teacher_example.csv"
+DATA_PATH = r"C:\Users\ale03\OneDrive\Escritorio\MAYAB\SEMESTRE 8\MINERIA DE DATOS\data-mining-course\data-mining-2026\teams\team-01\session_22_ANN\industrial_ann_teacher_example.csv"
 
 # TODO 1:
 # Load the dataset into a DataFrame called data
@@ -216,10 +216,10 @@ print(sorted_df.round(4))
 # ============================================================
 
 print("\n=== QUESTIONS FOR YOUR TEAM ===")
-print("1. Which ANN configuration performed best?")
-print("2. Did adding more neurons always improve performance?")
-print("3. Did adding more hidden layers always improve performance?")
-print("4. Which activation function worked best?")
-print("5. Which solver worked best?")
-print("6. How did max_iter affect the results?")
-print("7. If you had to keep only one model, which one would you choose and why?")
+print("1. Which ANN configuration performed best? The configuration with the highest R² in the sorted results table performed best. Check the first row of the sorted table for the best ")
+print("2. Did adding more neurons always improve performance? Not always. Sometimes more neurons can help, but too many can lead to overfitting or diminishing returns. Compare the R², MAE, MSE, and RMSE for (10,) vs (20,).")
+print("3. Did adding more hidden layers always improve performance? No. More layers can help capture complex patterns, but can also make training harder and may not always improve results. Compare (10,) vs (10, 10) and (5, 5).")
+print("4. Which activation function worked best? Check the best R² row for the activation used. Typically, relu or tanh perform well, but your results may vary.")
+print("5. Which solver worked best? Again, check the best R² row for the solver used. adam is often robust, but lbfgs can work well for small datasets.")
+print("6. How did max_iter affect the results? Higher max_iter allows more training and can improve results if the model hasn't converged, but after a point, it may not help much. Compare models with 500 vs 1000 iterations.")
+print("7. If you had to keep only one model, which one would you choose and why? Choose the model with the highest R² and lowest errors (MAE, MSE, RMSE) from the sorted table, as it generalizes best to unseen data.")
