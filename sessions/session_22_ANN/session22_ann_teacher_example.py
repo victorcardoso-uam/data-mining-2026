@@ -22,7 +22,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
-DATA_PATH = "industrial_ann_teacher_example.csv"
+DATA_PATH = r"C:\Users\mario\OneDrive\Escritorio\School\8to Semestre\Data Miing\data-mining-course\Repositories\data-mining-2026\sessions\session_22_ANN\industrial_ann_teacher_example.csv"
 
 data = pd.read_csv(DATA_PATH)
 
