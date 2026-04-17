@@ -215,10 +215,33 @@ print(sorted_df.round(4))
 # ============================================================
 
 print("\n=== QUESTIONS FOR YOUR TEAM ===")
-print("1. Which ANN configuration performed best?")
+print("1. Which ANN configuration performed best?") 
 print("2. Did adding more neurons always improve performance?")
 print("3. Did adding more hidden layers always improve performance?")
 print("4. Which activation function worked best?")
 print("5. Which solver worked best?")
 print("6. How did max_iter affect the results?")
 print("7. If you had to keep only one model, which one would you choose and why?")
+# 1. Best configuration
+print("1. Best Config: is (4)")
+print("   because have the highest R2 and lowest MAE, MSE, RMSE among all configurations.")
+
+# 2. More neurons always improve?
+print("2. More Neurons: Not always. If we add too many, the model might overfit,")
+print("   meaning it memorizes the training data but fails with new, unseen data.")
+
+# 3. More hidden layers always improve?
+print("3. More Hidden Layers: No. Too many layers can make the model harder to train")
+print("   (vanishing gradient problem) and unnecessarily complex for simple datasets.")
+
+# 4. Activation function effect
+print("4. Activation: IN THIS CASE WAS TANH")
+
+# 5. Which solver worked best?
+print("5. Solver: IN THIS CASE WAS LBFGS")
+
+# 6. How did max_iter affect the results?
+print("6. Max_iter: Higher max_iter allows the model to train longer and potentially converge to a better solution, but it also increases training time. In this case, the best model had a max_iter of 200, which suggests that it converged well without needing too many iterations.")
+
+#7 If you had to keep only one model, which one would you choose and why?
+print("7. Keep only one model: I would choose the best configuration (4) because it has the best performance metrics (highest R2 and lowest MAE, MSE, RMSE), which indicates it generalizes better to unseen data compared to the other configurations, in this case.")
