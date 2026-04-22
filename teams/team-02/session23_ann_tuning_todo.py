@@ -54,11 +54,7 @@ from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 # 1. LOAD DATA
 # ============================================================
 
-<<<<<<< HEAD
-DATA_PATH = "industrial_ann_teacher_example.csv"
-=======
-DATA_PATH = r"C:\Users\ale03\OneDrive\Escritorio\MAYAB\SEMESTRE 8\MINERIA DE DATOS\data-mining-course\data-mining-2026\teams\team-01\session_22_ANN\industrial_ann_teacher_example.csv"
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
+DATA_PATH = r"C:\Users\david\Downloads\Data Mining Course\Repositories\data-mining-2026\sessions\session_22_ANN\industrial_ann_teacher_example.csv"
 
 # TODO 1:
 # Load the dataset into a DataFrame called data
@@ -77,20 +73,12 @@ print(data.shape)
 
 # TODO 2:
 # Define X using all columns except the target column
-<<<<<<< HEAD
-X = data.drop(columns=["production_quality_score"]).values
-
-# TODO 3:
-# Define y using only the target column
-y = data["production_quality_score"].values
-=======
 X = data.drop(columns=["production_quality_score"])
 
 # TODO 3:
 # Define y using only the target column
 y = data["production_quality_score"]
 
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 
 # ============================================================
 # 3. TRAIN / TEST SPLIT
@@ -121,24 +109,10 @@ X_test = scaler.transform(X_test)
 # ============================================================
 
 def train_and_evaluate_ann(hidden_layer_sizes, activation, solver, max_iter):
-<<<<<<< HEAD
-     model = MLPRegressor(
-        hidden_layer_sizes=hidden_layer_sizes,
-        activation=activation,
-        solver=solver,
-        max_iter=max_iter,
-        random_state=42
-    )
-"""
-    Trains one ANN configuration and returns the four evaluation metrics.
-    """
-def train_and_evaluate_ann(hidden_layer_sizes, activation, solver, max_iter):
-=======
     """
     Trains one ANN configuration and returns the four evaluation metrics.
     """
 
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
     model = MLPRegressor(
         hidden_layer_sizes=hidden_layer_sizes,
         activation=activation,
@@ -149,28 +123,11 @@ def train_and_evaluate_ann(hidden_layer_sizes, activation, solver, max_iter):
 
     # TODO 6:
     # Train the model
-<<<<<<< HEAD
-def train_and_evaluate_ann(hidden_layer_sizes, activation, solver, max_iter):
-    model = MLPRegressor(
-        hidden_layer_sizes=hidden_layer_sizes,
-        activation=activation,
-        solver=solver,
-        max_iter=max_iter,
-        random_state=42
-    )
-
-    # TODO 7:
-    # Generate predictions using X_test
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-    
-=======
     model.fit(X_train, y_train)
 
     # TODO 7:
     # Generate predictions using X_test
     y_pred = model.predict(X_test)
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 
     # TODO 8:
     # Calculate metrics
@@ -200,17 +157,10 @@ print("\n=== BASELINE MODEL ===")
 # TODO 9:
 # Complete the baseline model configuration
 baseline = train_and_evaluate_ann(
-<<<<<<< HEAD
-    hidden_layer_sizes=(10,),  # Example: (10,)
+    hidden_layer_sizes=(10,),   # Example: (10,)
     activation="relu",           # Example: "relu"
     solver="adam",               # Example: "adam"
     max_iter=500              # Example: 500
-=======
-    hidden_layer_sizes=(10,),
-    activation="relu",
-    solver="adam",
-    max_iter=500
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 )
 
 print(baseline)
@@ -226,15 +176,9 @@ print("\n=== ADDITIONAL ANN CONFIGURATIONS ===")
 # Replace these placeholders with at least THREE real experiments
 # You may add more configurations if you want
 experiments = [
-<<<<<<< HEAD
-    {"hidden_layer_sizes": (20,), "activation": "relu", "solver": "adam", "max_iter": 500},
-    {"hidden_layer_sizes": (10, 5), "activation": "tanh", "solver": "lbfgs", "max_iter": 500},
-    {"hidden_layer_sizes": (15, 10, 5), "activation": "logistic", "solver": "sgd", "max_iter": 500},
-=======
-    {"hidden_layer_sizes": (20,), "activation": "relu", "solver": "adam", "max_iter": 1000},
-    {"hidden_layer_sizes": (10, 10), "activation": "tanh", "solver": "adam", "max_iter": 1000},
-    {"hidden_layer_sizes": (5, 5), "activation": "logistic", "solver": "lbfgs", "max_iter": 500},
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
+    {"hidden_layer_sizes": (10,), "activation": "relu", "solver": "adam", "max_iter": 500},
+    {"hidden_layer_sizes": (20, 10), "activation": "tanh", "solver": "lbfgs", "max_iter": 500},
+    {"hidden_layer_sizes": (30, 20, 10), "activation": "relu", "solver": "adam", "max_iter": 500},
 ]
 
 results = []
@@ -262,11 +206,6 @@ print(results_df.round(4))
 # TODO 11:
 # Sort the comparison table by R2 in descending order
 sorted_df = results_df.sort_values(by="R2", ascending=False)
-<<<<<<< HEAD
-print(sorted_df.round(4))
-
-=======
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 
 print("\n=== SORTED RESULTS (BEST R2 FIRST) ===")
 print(sorted_df.round(4))
@@ -276,21 +215,27 @@ print(sorted_df.round(4))
 # 9. FINAL QUESTIONS
 # ============================================================
 
-print("\n=== QUESTIONS FOR YOUR TEAM ===")
-<<<<<<< HEAD
-print("1. Which ANN configuration performed best?")
-print("2. Did adding more neurons always improve performance?")
-print("3. Did adding more hidden layers always improve performance?")
-print("4. Which activation function worked best?")
-print("5. Which solver worked best?")
-print("6. How did max_iter affect the results?")
-print("7. If you had to keep only one model, which one would you choose and why?")
-=======
-print("1. Which ANN configuration performed best? The configuration with the highest R² in the sorted results table performed best. Check the first row of the sorted table for the best ")
-print("2. Did adding more neurons always improve performance? Not always. Sometimes more neurons can help, but too many can lead to overfitting or diminishing returns. Compare the R², MAE, MSE, and RMSE for (10,) vs (20,).")
-print("3. Did adding more hidden layers always improve performance? No. More layers can help capture complex patterns, but can also make training harder and may not always improve results. Compare (10,) vs (10, 10) and (5, 5).")
-print("4. Which activation function worked best? Check the best R² row for the activation used. Typically, relu or tanh perform well, but your results may vary.")
-print("5. Which solver worked best? Again, check the best R² row for the solver used. adam is often robust, but lbfgs can work well for small datasets.")
-print("6. How did max_iter affect the results? Higher max_iter allows more training and can improve results if the model hasn't converged, but after a point, it may not help much. Compare models with 500 vs 1000 iterations.")
-print("7. If you had to keep only one model, which one would you choose and why? Choose the model with the highest R² and lowest errors (MAE, MSE, RMSE) from the sorted table, as it generalizes best to unseen data.")
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
+"""
+=== ANSWERS TO YOUR TEAM QUESTIONS ===
+
+1. Which ANN configuration performed best?
+ANSWER: Model 2 with hidden_layer_sizes=(20,10), activation=tanh, and solver=lbfgs performed best with an R2 of 0.7878, significantly outperforming all other configurations.
+
+2. Did adding more neurons always improve performance?
+ANSWER: No. Model 1 had 10 neurons and performed poorly (R2=-90.03). Model 2 with 30 total neurons (20+10) performed best (R2=0.7878). Model 3 with 60 total neurons (30+20+10) performed worse than Model 2 (R2=-0.0138). This shows that simply adding more neurons does not guarantee better performance.
+
+3. Did adding more hidden layers always improve performance?
+ANSWER: No. Model 1 with 1 hidden layer had R2=-90.03. Model 2 with 2 hidden layers had the best performance (R2=0.7878). Model 3 with 3 hidden layers performed worse (R2=-0.0138). Adding more layers actually degraded performance in this case.
+
+4. Which activation function worked best?
+ANSWER: Tanh activation function worked best, achieving R2=0.7878 in Model 2. The ReLU activation used in Models 1 and 3 resulted in much worse performance (R2=-90.03 and R2=-0.0138 respectively).
+
+5. Which solver worked best?
+ANSWER: The lbfgs solver worked best, achieving R2=0.7878 in Model 2. The adam solver used in Models 1 and 3 resulted in poor performance (R2=-90.03 and R2=-0.0138). However, lbfgs showed convergence warnings, suggesting it needed more iterations.
+
+6. How did max_iter affect the results?
+ANSWER: All models used max_iter=500. Convergence warnings appeared for adam solver (Models 1 and 3) and lbfgs solver (Model 2), indicating that 500 iterations was insufficient for full convergence. Despite not fully converging, Model 2 still achieved good results, suggesting that increasing max_iter might further improve performance for other models as well.
+
+7. If you had to keep only one model, which one would you choose and why?
+ANSWER: Model 2 with hidden_layer_sizes=(20,10), activation=tanh, and solver=lbfgs. This model achieved the highest R2 score of 0.7878, the lowest MAE of 3.72, and the lowest RMSE of 5.04. It clearly dominates all other configurations in all metrics and is the only model that achieves good predictive performance.
+"""

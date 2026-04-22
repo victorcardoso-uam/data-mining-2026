@@ -22,15 +22,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
-<<<<<<< HEAD
-DATA_PATH = "industrial_ann_teacher_example.csv"
-=======
-<<<<<<< HEAD
-DATA_PATH = r"C:\Users\mario\OneDrive\Escritorio\School\8to Semestre\Data Miing\data-mining-course\Repositories\data-mining-2026\sessions\session_22_ANN\industrial_ann_teacher_example.csv"
-=======
 DATA_PATH = r"C:\Users\david\Downloads\Data Mining Course\Repositories\data-mining-2026\sessions\session_22_ANN\industrial_ann_teacher_example.csv"
->>>>>>> 3ddde783856d16e7ea55f4bf076177dd9a2774a4
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 
 data = pd.read_csv(DATA_PATH)
 
@@ -124,14 +116,6 @@ print("\n=== SORTED BY R2 (HIGHER IS BETTER) ===")
 sorted_df = results_df.sort_values(by="R2", ascending=False)
 print(sorted_df.round(4))
 
-<<<<<<< HEAD
-print("\n=== QUESTIONS FOR CLASS DISCUSSION ===")
-print("1. Which ANN configuration performed best?")
-print("2. Did adding more neurons always improve the model?")
-print("3. Did adding more hidden layers always improve the model?")
-print("4. How did activation function affect performance?")
-print("5. Why is ANN useful for nonlinear problems?")
-=======
 # === QUESTIONS FOR CLASS DISCUSSION ===
 # 1. Which ANN configuration performed best?
 # 2. Did adding more neurons always improve the model?
@@ -189,4 +173,3 @@ print("5. Why is ANN useful for nonlinear problems?")
 #    - Multiple activation functions (relu, tanh) introduce nonlinearity at each neuron,
 #      enabling the network to approximate any continuous function given sufficient capacity.
 
->>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
