@@ -20,6 +20,7 @@ Then answer the reflection questions at the end.
 """
 
 import pandas as pd
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -29,11 +30,13 @@ from sklearn.linear_model import LinearRegression
 # CONFIGURATION
 # ============================================================
 
-DATA_PATH = "categorical_regression_production.csv"
+# Get the directory of the current script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(SCRIPT_DIR, "categorical_regression_production.csv")
 
 # TODO 1:
 # Write the target column name
-TARGET = ?
+TARGET = "daily_output_units"
 
 TEST_SIZE = 0.20
 RANDOM_STATE = 42
@@ -61,11 +64,11 @@ print(df.dtypes)
 # Create X_case2 by removing ONLY the target column.
 # Important:
 # Do NOT remove the categorical variable in this case.
-X_case2 = ?
+X_case2 = df.drop([TARGET], axis=1)
 
 # TODO 3:
 # Create y using the target column
-y = ?
+y = df[TARGET]
 
 print("\n=== PREDICTOR COLUMNS USED IN CASE 2 ===")
 print(X_case2.columns.tolist())
@@ -89,12 +92,12 @@ model = LinearRegression()
 # TODO 4:
 # Try fitting the model.
 # The script is expected to fail here.
-model.?
+model.fit(X_train, y_train)
 
 # TODO 5:
 # Try generating predictions.
 # This line may also fail depending on the previous error.
-predictions = ?
+predictions = model.predict(X_test)
 
 
 # ============================================================
@@ -106,3 +109,18 @@ print("1. What error message appeared?")
 print("2. Why does the model fail in this case?")
 print("3. What type of data is stored in the categorical variable?")
 print("4. What must be done before using that variable in regression?")
+"""
+TEAM REFLECTION ANSWERS
+----------------------
+1. What error message appeared?
+    ValueError: could not convert string to float: 'Night'
+
+2. Why does the model fail in this case?
+    The model fails because scikit-learn's LinearRegression requires all input features to be numeric. The 'shift' column is categorical (string), so it cannot be converted to float automatically.
+
+3. What type of data is stored in the categorical variable?
+    The categorical variable ('shift') stores string values such as 'Morning', 'Evening', and 'Night'.
+
+4. What must be done before using that variable in regression?
+    The categorical variable must be encoded into numeric values (e.g., using one-hot encoding or label encoding) before it can be used in a regression model.
+"""
