@@ -244,4 +244,4 @@ print("5. Solver: IN THIS CASE WAS LBFGS")
 print("6. Max_iter: Higher max_iter allows the model to train longer and potentially converge to a better solution, but it also increases training time. In this case, the best model had a max_iter of 200, which suggests that it converged well without needing too many iterations.")
 
 #7 If you had to keep only one model, which one would you choose and why?
-print("7. Keep only one model: I would choose the best configuration (4) because it has the best performance metrics (highest R2 and lowest MAE, MSE, RMSE), which indicates it generalizes better to unseen data compared to the other configurations, in this case.")
+print("7. Keep only one model:. I would choose the best configuration (4) because it has the best performance metrics (highest R2 and lowest MAE, MSE, RMSE), which indicates it generalizes better to unseen data compared to the other configurations, in this case.")
