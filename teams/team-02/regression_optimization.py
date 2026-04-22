@@ -15,15 +15,15 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # CONFIGURATION
 # -----------------------------
 
-DATA_PATH = r"D:\Data mining course\Midterm exam1\DATA\PROCESSED\renewable_energy_cleaned_exam.csv"
-TARGET = "power_kw"
+DATA_PATH = r"C:\Users\david\Downloads\Data Mining Course\Dataset Parcial 2\Data\Raw\renewable_energy_raw.csv"
 
+TARGET = "power_kw"
 
 FEATURES = [
     "irradiance_wm2",
     "temp_c",
-    "humidity_pct",
     "wind_speed_ms",
+    "humidity_pct",
 ]
 
 # Parámetros para evaluar
@@ -36,6 +36,9 @@ RANDOM_STATES = [42, 123, 256]
 # -----------------------------
 
 df = pd.read_csv(DATA_PATH)
+
+# Remove rows with missing values
+df = df.dropna(subset=FEATURES + [TARGET])
 
 X = df[FEATURES]
 y = df[TARGET]

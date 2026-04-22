@@ -62,6 +62,8 @@ from typing import List, Optional, Tuple, Dict
 
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend (no Tcl/Tk required)
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
@@ -85,7 +87,7 @@ from sklearn.preprocessing import OneHotEncoder
 # Replace this with the path to YOUR project dataset.
 # Example:
 # DATA_PATH = "datasets/session_16/my_project_data.csv"
-DATA_PATH = "D:\\Data mining course\\Midterm exam1\\DATA\\PROCESSED\\renewable_energy_cleaned_exam.csv"
+DATA_PATH = "C:\\Users\\david\\Downloads\\Data Mining Course\\Dataset Parcial 2\\Data\\Raw\\renewable_energy_cleaned_exam.csv"
 
 # TODO 2:
 # Replace this with the exact name of the column you want to predict.
@@ -94,7 +96,7 @@ TARGET_COL = "power_kw"
 # TODO 3:
 # Replace this with the features you want to use.
 # If you leave FEATURE_COLS = None, the script will use ALL columns except the target.
-FEATURE_COLS: List[str] = ["irradiance_wm2", "humidity_pct"]
+FEATURE_COLS: Optional[List[str]] = ["irradiance_wm2", "humidity_pct"]
 
 # TODO 4:
 # Choose one:
@@ -566,11 +568,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
- main()
-
-print ("1.The Deep Tree (max_depth = 10) has the lowest training error (1.721576).This happens because deeper trees can fit the training data very closely.")
-print ("2.The Best Tree (max_depth = 3) has the lowest validation/test error (7.4522). This means it generalizes better to unseen data compared to the shallow and deep trees.")
-print ("3. Validation performance stops improving after depth = 3. After this point, validation error starts increasing, which indicates overfitting. ") 
-print ("4. Yes. As tree depth increases, training error keeps decreasing, but validation/test error increases. This is a clear sign of overfitting. ")
-print ("5.  I would choose the tree with max_depth = 3 because it has the lowest validation error and the best balance between model complexity and predictive performance.")
-print ("6. As model complexity increases (deeper trees), the model fits the training data better, reducing training error. However, overly complex models start memorizing the data, instead of learning general patterns, which increases validation/test error.A moderate complexity (depth = 3) provides the best generalization.")
+    main()
