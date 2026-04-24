@@ -15,13 +15,13 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # CONFIGURATION
 # -----------------------------
 
-DATA_PATH = "solar_farm_production.csv"
+DATA_PATH = r"C:\Users\Fernando\Desktop\Data-mining-course\data-mining-2026\data-mining-2026\teams\team-01\Session_17\team01_inventory_replenishment_cost.csv"
 
-TARGET = "energy_output_kw"
+TARGET = "G3"
 
 FEATURES = [
-    "solar_irradiance_wm2",
-    "temperature_c",
+    "studytime",
+    "failures"
 ]
 
 # Parámetros para evaluar

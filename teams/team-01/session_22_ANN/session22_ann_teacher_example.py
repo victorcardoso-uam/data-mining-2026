@@ -23,13 +23,9 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
 <<<<<<< HEAD
-DATA_PATH = "industrial_ann_teacher_example.csv"
+DATA_PATH = "C:\\Users\\Fernando\\Desktop\\Data-mining-course\\data-mining-2026\\data-mining-2026\\teams\\team-01\\industrial_ann_student_activity.csv"
 =======
-<<<<<<< HEAD
-DATA_PATH = r"C:\Users\mario\OneDrive\Escritorio\School\8to Semestre\Data Miing\data-mining-course\Repositories\data-mining-2026\sessions\session_22_ANN\industrial_ann_teacher_example.csv"
-=======
-DATA_PATH = r"C:\Users\david\Downloads\Data Mining Course\Repositories\data-mining-2026\sessions\session_22_ANN\industrial_ann_teacher_example.csv"
->>>>>>> 3ddde783856d16e7ea55f4bf076177dd9a2774a4
+DATA_PATH = r"C:\Users\ale03\OneDrive\Escritorio\MAYAB\SEMESTRE 8\MINERIA DE DATOS\data-mining-course\session_22_ANN\industrial_ann_student_activity.csv"
 >>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 
 data = pd.read_csv(DATA_PATH)
@@ -40,8 +36,13 @@ print(data.head())
 print("\n=== DATASET SHAPE ===")
 print(data.shape)
 
+<<<<<<< HEAD
 X = data.drop(columns=["production_quality_score"]).values
 y = data["production_quality_score"].values
+=======
+X = data.drop(columns=["daily_output_units"]).values
+y = data["daily_output_units"].values
+>>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
@@ -84,7 +85,11 @@ baseline = train_and_evaluate_ann(
     hidden_layer_sizes=(10,),
     activation="relu",
     solver="adam",
+<<<<<<< HEAD
     max_iter=500
+=======
+    max_iter=2000
+>>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 )
 
 for k, v in baseline.items():
@@ -96,12 +101,21 @@ for k, v in baseline.items():
 print("\n=== RUNNING MORE ANN EXPERIMENTS ===")
 
 experiments = [
+<<<<<<< HEAD
     {"hidden_layer_sizes": (5,), "activation": "relu", "solver": "adam", "max_iter": 500},
     {"hidden_layer_sizes": (20,), "activation": "relu", "solver": "adam", "max_iter": 500},
     {"hidden_layer_sizes": (10, 10), "activation": "relu", "solver": "adam", "max_iter": 500},
     {"hidden_layer_sizes": (10,), "activation": "tanh", "solver": "adam", "max_iter": 500},
     {"hidden_layer_sizes": (10,), "activation": "relu", "solver": "lbfgs", "max_iter": 500},
     {"hidden_layer_sizes": (20, 10), "activation": "tanh", "solver": "adam", "max_iter": 800},
+=======
+    {"hidden_layer_sizes": (5,), "activation": "relu", "solver": "adam", "max_iter": 2000},
+    {"hidden_layer_sizes": (20,), "activation": "relu", "solver": "adam", "max_iter": 2000},
+    {"hidden_layer_sizes": (10, 10), "activation": "relu", "solver": "adam", "max_iter": 2000},
+    {"hidden_layer_sizes": (10,), "activation": "tanh", "solver": "adam", "max_iter": 2000},
+    {"hidden_layer_sizes": (10,), "activation": "relu", "solver": "lbfgs", "max_iter": 2000},
+    {"hidden_layer_sizes": (20, 10), "activation": "tanh", "solver": "adam", "max_iter": 2000},
+>>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
 ]
 
 results = [baseline]
@@ -124,69 +138,17 @@ print("\n=== SORTED BY R2 (HIGHER IS BETTER) ===")
 sorted_df = results_df.sort_values(by="R2", ascending=False)
 print(sorted_df.round(4))
 
-<<<<<<< HEAD
 print("\n=== QUESTIONS FOR CLASS DISCUSSION ===")
+<<<<<<< HEAD
 print("1. Which ANN configuration performed best?")
 print("2. Did adding more neurons always improve the model?")
 print("3. Did adding more hidden layers always improve the model?")
 print("4. How did activation function affect performance?")
 print("5. Why is ANN useful for nonlinear problems?")
 =======
-# === QUESTIONS FOR CLASS DISCUSSION ===
-# 1. Which ANN configuration performed best?
-# 2. Did adding more neurons always improve the model?
-# 3. Did adding more hidden layers always improve the model?
-# 4. How did activation function affect performance?
-# 5. Why is ANN useful for nonlinear problems?
-
-# === ANSWERS BASED ON EXPERIMENTAL RESULTS ===
-
-# 1. Which ANN configuration performed best?
-#    The best performing ANN configuration was:
-#    - Hidden layers: (10,) - single layer with 10 neurons
-#    - Activation function: relu
-#    - Solver: lbfgs
-#    - Max iterations: 500
-#    This configuration achieved an R² of 0.9970, MAE of 2.6640, and RMSE of 3.2937,
-#    demonstrating exceptional predictive performance on the test set.
-
-# 2. Did adding more neurons always improve the model?
-#    No. Adding more neurons did not always improve performance:
-#    - (5,) neurons + adam: R² = -1.2197 (worse than baseline)
-#    - (10,) neurons + adam: R² = -90.0312 (baseline)
-#    - (20,) neurons + adam: R² = -8.9661 (worse than baseline)
-#    - (10, 10) neurons + adam: R² = 0.5849 (better than single layers with adam)
-#    This shows that neuron count alone is not the determining factor; the solver and
-#    convergence also play critical roles in model performance.
-
-# 3. Did adding more hidden layers always improve the model?
-#    No. Adding more hidden layers did not guarantee improvement:
-#    - Single layer (10,) + lbfgs: R² = 0.9970 (BEST overall)
-#    - Two layers (10, 10) + adam: R² = 0.5849 (good but not best)
-#    - Two layers (20, 10) + tanh + adam: R² = -9.1045 (poor)
-#    This demonstrates that deeper networks don't automatically produce better results;
-#    architecture must be balanced with proper solver selection and training parameters.
-
-# 4. How did activation function affect performance?
-#    Activation function had a significant impact, but the solver was equally important:
-#    - relu with adam: R² = -90.0312 (poor)
-#    - tanh with adam: R² = -113.4697 (poor)
-#    - relu with lbfgs: R² = 0.9970 (excellent)
-#    The key finding: using the lbfgs solver with relu activation produced dramatically
-#    better results than adam solver regardless of neuron count or layer configuration.
-#    This suggests that convergence quality matters more than activation function choice
-#    for this particular regression problem.
-
-# 5. Why is ANN useful for nonlinear problems?
-#    ANNs are useful for nonlinear problems because:
-#    - They can learn complex nonlinear relationships between inputs and outputs through
-#      combination of multiple neurons and layers with nonlinear activation functions.
-#    - The experimental results show the best ANN (R² = 0.9970) fits the data far better
-#      than simpler linear models would, indicating the data contains significant nonlinear
-#      patterns that the neural network successfully captures.
-#    - Hidden layers allow the network to automatically discover higher-level features and
-#      patterns in the data without manual feature engineering.
-#    - Multiple activation functions (relu, tanh) introduce nonlinearity at each neuron,
-#      enabling the network to approximate any continuous function given sufficient capacity.
-
+print("1. Which ANN configuration performed best? The best configuration was (10,) hidden neurons, ReLU activation, solver = lbfgs, max_iter = 500, with R² = 0.9656, MAE ≈ 10.06, and RMSE ≈ 12.91.This setup achieved excellent accuracy compared to all other tested models.")
+print("2. Did adding more neurons always improve the model? No. For example, increasing from (10,) with adam to (20,) with adam slightly improved R² (from -15.94 to -13.39), but performance was still poor. The best results came from fewer neurons (10) combined with a different solver (lbfgs).")
+print("3. Did adding more hidden layers always improve the model? No. The (10,10) with adam model had R² = -0.25, which was better than most but still far from optimal. The best model used only one hidden layer (10 neurons).")
+print("4. How did activation function affect performance? The ReLU activation clearly outperformed tanh. Models with tanh had very negative R² values (≈ -16), while ReLU combined with lbfgs achieved near-perfect performance.")
+print("5. Why is ANN useful for nonlinear problems? Because ANNs can approximate complex nonlinear functions through hidden layers and activation functions.")
 >>>>>>> 5b3d665207ca0bf1e39e13c75f9116e33fe91375
