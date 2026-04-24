@@ -118,7 +118,23 @@ model = MLPRegressor(
     random_state=42
 )
 
+experiments = [
+    {"hidden_layer_sizes": (10,), "activation": "relu", "solver": "adam", "max_iter": 500},
+    {"hidden_layer_sizes": (20, 10), "activation": "relu", "solver": "adam", "max_iter": 500},
+    {"hidden_layer_sizes": (30, 20, 10), "activation": "relu", "solver": "adam", "max_iter": 500},
+]
 
+results = []
+results.append(model)
+
+for exp in experiments:
+    result = MLPRegressor(
+        hidden_layer_sizes=exp["hidden_layer_sizes"],
+        activation=exp["activation"],
+        solver=exp["solver"],
+        max_iter=exp["max_iter"]
+    )
+    results.append(result)
 # ============================================================
 # 6. TRAIN MODEL
 # ============================================================
