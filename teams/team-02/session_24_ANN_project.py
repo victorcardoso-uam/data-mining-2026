@@ -1,0 +1,215 @@
+"""
+SESSION 24 — ANN APPLICATION TO YOUR PROJECT
+Student Activity Script (WITH TODOs)
+
+GOAL
+----
+Apply an Artificial Neural Network (ANN) to your own project dataset
+and evaluate whether the model produces reliable results.
+
+WHAT YOU MUST DO
+----------------
+1. Load your team project dataset
+2. Define input variables (X) and target variable (y)
+3. Split the data into training and testing sets
+4. Scale the input variables
+5. Define an ANN model
+6. Train the model
+7. Generate predictions
+8. Calculate the evaluation metrics:
+   - R2
+   - MAE
+   - MSE
+   - RMSE
+9. Interpret your results
+
+IMPORTANT
+---------
+Use the same ANN ideas from Sessions 22 and 23.
+This time, you must adapt the model to YOUR OWN PROJECT DATASET.
+
+You may start with a simple ANN configuration and then improve it if needed.
+"""
+
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPRegressor
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+
+
+# ============================================================
+# 1. LOAD DATA
+# ============================================================
+
+# TODO 1:
+# Replace this with the path to your own project dataset
+DATA_PATH = r"C:\Users\david\Downloads\Data Mining Course\Repositories\data-mining-2026\datasets\raw\renewable_energy_raw.csv"
+
+# TODO 2:
+# Load the dataset into a DataFrame called data
+data = pd.read_csv(DATA_PATH)
+
+print("\n=== DATASET PREVIEW ===")
+print(data.head())
+
+print("\n=== DATASET SHAPE ===")
+print(data.shape)
+
+print("\n=== COLUMN NAMES ===")
+print(list(data.columns))
+
+# Remove rows with missing values
+data = data.dropna()
+
+print("\n=== DATASET SHAPE AFTER REMOVING NaN ===")
+print(data.shape)
+
+
+# ============================================================
+# 2. DEFINE INPUTS (X) AND TARGET (y)
+# ============================================================
+
+# TODO 3:
+# Replace with the exact name of your target column
+TARGET_COLUMN = "power_kw"
+
+# TODO 4:
+# Define X using all predictor columns
+# Exclude non-numeric columns: site_id, timestamp, inverter_status
+COLUMNS_TO_DROP = [TARGET_COLUMN, 'site_id', 'timestamp', 'inverter_status']
+X = data.drop(columns=COLUMNS_TO_DROP).values
+
+# TODO 5:
+# Define y using only the target column
+y = data[TARGET_COLUMN].values
+
+
+# ============================================================
+# 3. TRAIN / TEST SPLIT
+# ============================================================
+
+# TODO 6:
+# You may keep test_size=0.2 and random_state=42
+# or modify them if justified
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+
+# ============================================================
+# 4. SCALE INPUT FEATURES
+# ============================================================
+
+scaler = StandardScaler()
+
+# TODO 7:
+# Fit the scaler on X_train and transform X_train
+X_train = scaler.fit_transform(X_train)
+
+# TODO 8:
+# Transform X_test using the same scaler
+X_test = scaler.transform(X_test)
+
+
+# ============================================================
+# 5. DEFINE ANN MODEL
+# ============================================================
+
+# TODO 9:
+# Complete the ANN configuration
+# Suggested parameters to modify:
+# - hidden_layer_sizes
+# - activation
+# - solver
+# - max_iter
+model = MLPRegressor(
+    hidden_layer_sizes=(100, 50),
+    activation='relu',
+    solver='adam',
+    max_iter=1000,
+    random_state=42
+)
+
+
+# ============================================================
+# 6. TRAIN MODEL
+# ============================================================
+
+# TODO 10:
+# Train the model
+model.fit(X_train, y_train)
+
+
+# ============================================================
+# 7. GENERATE PREDICTIONS
+# ============================================================
+
+# TODO 11:
+# Generate predictions using X_test
+y_pred = model.predict(X_test)
+
+
+# ============================================================
+# 8. CALCULATE EVALUATION METRICS
+# ============================================================
+
+# TODO 12:
+# Calculate all four evaluation metrics
+r2 = r2_score(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+
+print("\n=== MODEL RESULTS ===")
+print("R2  :", round(r2, 4))
+print("MAE :", round(mae, 4))
+print("MSE :", round(mse, 4))
+print("RMSE:", round(rmse, 4))
+
+
+# ============================================================
+# 9. TEAM INTERPRETATION
+# ============================================================
+#
+# QUESTIONS FOR YOUR TEAM:
+#
+# 1. What dataset did you use?
+#    We used the renewable_energy_raw.csv dataset containing 610 solar farm records.
+#    After removing missing values, we had 556 clean records for training and testing.
+#
+# 2. What is your target variable?
+#    Our target variable is 'power_kw', which represents the electrical power output
+#    (in kilowatts) generated by the solar farm.
+#
+# 3. Which ANN configuration did you choose?
+#    - Input layer: 4 features (irradiance, temp, humidity, wind_speed)
+#    - Hidden layers: 2 layers with 100 and 50 neurons respectively
+#    - Activation function: ReLU (Rectified Linear Unit)
+#    - Optimizer: Adam
+#    - Max iterations: 1000
+#    - Output layer: 1 neuron (regression task)
+#
+# 4. What do the evaluation metrics tell you about the model?
+#    - R² = 0.9796 (97.96%): The model explains almost all of the variance
+#      in solar power output, which is excellent.
+#    - MAE = 2.91 kW: On average, predictions are off by about 2.91 kilowatts.
+#    - MSE = 12.83: The squared errors are very small.
+#    - RMSE = 3.58 kW: Root mean squared error is minimal.
+#    These metrics indicate the model has learned the relationship between
+#    weather variables and power output very well.
+#
+# 5. Do you think the model is reliable for your project?
+#    YES. The model is highly reliable with an R² of 0.9796. The low error metrics
+#    (MAE and RMSE) suggest the model makes accurate predictions. We can confidently
+#    use this model to predict solar farm power output based on weather conditions.
+#
+# 6. If you had more time, what would you improve?
+#    - Experiment with different network architectures (more/fewer layers, neurons)
+#    - Perform hyperparameter tuning (learning rate, batch size, regularization)
+#    - Try ensemble methods combining multiple models
+#    - Add feature engineering (e.g., time-based features, interaction terms)
+#    - Validate on unseen time periods to test temporal stability
+#    - Implement cross-validation for more robust evaluation
