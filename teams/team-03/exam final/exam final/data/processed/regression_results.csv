@@ -1,0 +1,4 @@
+model,R2,MAE,MSE,RMSE
+Linear Regression,0.795,2.4466,9.5868,3.0963
+Polynomial Regression (degree=2),0.9335,1.4005,3.1076,1.7628
+Polynomial Regression (degree=3),0.952,1.1713,2.245,1.4983
