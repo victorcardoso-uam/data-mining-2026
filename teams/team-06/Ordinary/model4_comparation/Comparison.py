@@ -272,7 +272,8 @@ print("  Saved: cmp_10_rmse_comparison.png")
 
 # Grouped bar chart: R², MAE-normalized, RMSE-normalized
 fig, axes = plt.subplots(1, 3, figsize=(14, 5))
-short_labels = ["DT", "LR", "PR", "ANN"]
+short_labels = [m.split()[0] if "ANN" not in m else "ANN"
+                for m in comparison_sorted["Model"].tolist()]
 
 axes[0].bar(short_labels, r2_vals, color=colors, edgecolor='white')
 axes[0].set_title('R² (higher is better)', fontweight='bold')
