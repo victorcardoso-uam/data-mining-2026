@@ -1,0 +1,4 @@
+model,R2,MAE,MSE,RMSE
+"ANN — Config A: (100,) relu 2000 iter",0.8375,2.1734,7.6006,2.7569
+"ANN — Config B: (100,50) tanh 2000 iter",0.906,1.7492,4.3943,2.0963
+"ANN — Config C: (128,64,32) relu 2000 iter",0.9469,1.2055,2.4823,1.5755
