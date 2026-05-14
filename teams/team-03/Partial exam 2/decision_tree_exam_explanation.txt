@@ -1,0 +1,20 @@
+Practical Problem 1 – Decision Trees: Short Explanation
+
+Task 1:
+- The dataset was loaded and its shape, columns, and data types were displayed.
+- Input variables (X) were defined as all columns except the target.
+- The target variable (y) was 'daily_output_units'.
+- A DecisionTreeRegressor was trained on the data and evaluated using Mean Squared Error (MSE).
+
+Task 2:
+- Tree pruning was performed by setting max_depth=3 in the DecisionTreeRegressor.
+- The pruned model was trained and evaluated on the same data split.
+- Results (MSE) from both the original and pruned models were compared.
+
+Explanation:
+- The original decision tree (no pruning) can overfit the training data, resulting in a lower MSE on the test set if the data is similar, but may generalize poorly to new data.
+- Pruning the tree (limiting max_depth) reduces model complexity, which can help prevent overfitting and improve generalization, but may increase MSE if the tree is too simple (underfitting).
+- In this case, the pruned tree had a higher MSE, indicating some underfitting, but pruning is still important to balance bias and variance.
+
+Conclusion:
+- Always compare metrics between original and pruned models to select the best model for your data.

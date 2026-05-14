@@ -1,0 +1,9 @@
+Model,R2,MAE,MSE,RMSE
+Polynomial Regression (degree=3),0.952,1.1713,2.245,1.4983
+"ANN Config B (100,50) tanh",0.9393,1.362,2.8362,1.6841
+Polynomial Regression (degree=2),0.9335,1.4005,3.1076,1.7628
+"ANN Config C (128,64,32) relu",0.9169,1.5599,3.8855,1.9712
+Decision Tree (pruned d=5),0.8046,2.2573,9.1349,3.0224
+Linear Regression,0.795,2.4466,9.5868,3.0963
+"ANN Config A (100,) relu",0.757,2.5362,11.3637,3.371
+Decision Tree (default),0.7143,2.571,13.3608,3.6552
